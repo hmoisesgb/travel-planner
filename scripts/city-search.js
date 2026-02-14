@@ -1,5 +1,6 @@
 import { getCityData, getCityWeather } from "./city.mjs";
 import { createCityFavoriteCard, clearCityCards } from "./utils.mjs";
+import { addToFavorites } from "./favorites.mjs";
 
 const cityNameInput = document.getElementById('search');
 const searchBtn = document.getElementById('search-btn');

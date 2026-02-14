@@ -1,6 +1,6 @@
 export function addToFavorites(cityData){
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    if (!favorites.some(fav => fav.Id === cityData.Id)){
+    if (!favorites.some(fav => fav.id === cityData.id)){
         favorites.push(cityData);
         localStorage.setItem('favorites', JSON.stringify(favorites));
     }
@@ -11,7 +11,7 @@ export function addToFavorites(cityData){
 
 export function removeFromFavorites(cityData){
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    favorites = favorites.filter(fav => !(fav.Id === cityData.Id));
+    favorites = favorites.filter(fav => !(fav.id === cityData.id));
     localStorage.setItem('favorites', JSON.stringify(favorites));
     console.log('City removed from favorites');
 }

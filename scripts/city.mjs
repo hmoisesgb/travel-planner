@@ -10,11 +10,11 @@ export async function getCityData(cityName){
         cityData.country_code = location_data.results[0].country_code;
         cityData.latitude = location_data.results[0].latitude;
         cityData.longitude = location_data.results[0].longitude;
-        cityData.Id = `${cityData.name}-${cityData.country_code}`;
+        cityData.id = `${cityData.name}-${cityData.country_code}`;
     } else {
         console.log('City not found');
     }
-    if (cityData.name !== undefined && cityData.name !== 'undefined') {
+    if (cityData.name !== undefined) {
         await getCityImage(cityData);
     }
     return cityData;
