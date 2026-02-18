@@ -14,8 +14,16 @@ async function displayFavorites(){
         container.appendChild(message);
         return;
     }
+
+    const loadingSpinner = document.createElement('div');
+    loadingSpinner.classList.add('loading-spinner');
+    container.appendChild(loadingSpinner);
+
+    const weatherResults = await Promise.all(favorites.map(cityData => getCityWeather(cityData)));
+
+    container.removeChild(loadingSpinner);
     for (const cityData of favorites){
-        const weatherData = await getCityWeather(cityData);
+        const weatherData = weatherResults[favorites.indexOf(cityData)];
         const card = createCityRemoveFavoriteCard(cityData, weatherData);
         const removeFavoriteBtn = card.querySelector('.remove-favorite-btn');
         removeFavoriteBtn.addEventListener('click', () => {

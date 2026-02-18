@@ -1,0 +1,164 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    background-color: #f4f6f9;
+    color: #1f2937;
+    min-height: 100vh;
+}
+
+.navbar {
+    background-color: #004080;
+    padding: 16px 40px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: 300;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.navbar a:hover {
+    color: #FFD700;
+}
+
+.navbar a.active {
+    color: #FFD700;
+    font-weight: 500;
+}
+.home-container {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.home-container h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #004080;
+}
+
+.home-container h3 {
+    font-weight: 300;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+main {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+input {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    font-family: inherit;
+}
+
+button {
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    background-color: #FFD700;
+    color: #004080;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.1s ease, opacity 0.2s ease;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+#city-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+}
+.city-card {
+    background-color: white;
+    width: 280px;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.city-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.city-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.city-name-country {
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #004080;
+    text-align: center;
+}
+
+.weather-info h3 {
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.weather-info p {
+    font-weight: 300;
+    margin: 4px 0;
+    font-size: 0.9rem;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 6px solid #e5e7eb;
+    border-top: 6px solid #3b82f6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 40px auto;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .city-card {
+        width: 90%;
+    }
+}

@@ -10,6 +10,9 @@ searchBtn.addEventListener('click', async () => {
     clearCityCards();
     const cityName = cityNameInput.value.trim();
     if (cityName) {
+        const loadingSpinner = document.createElement('div');
+        loadingSpinner.classList.add('loading-spinner');
+        container.appendChild(loadingSpinner);
         const cityData = await getCityData(cityName);
         if (cityData.name !== undefined && cityData.name !== 'undefined') {
             const weatherData = await getCityWeather(cityData);
@@ -18,6 +21,7 @@ searchBtn.addEventListener('click', async () => {
             addFavoriteBtn.addEventListener('click', () => {
                 addToFavorites(cityData);
             });
+            container.removeChild(loadingSpinner);
             container.appendChild(card);
         }
         else{
