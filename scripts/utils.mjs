@@ -40,3 +40,25 @@ export function clearCityCards(){
     const container = document.getElementById('city-cards');
     container.innerHTML = '';
 }
+
+export function showNotification(message, type = 'info') {
+    const notificationContainer = document.querySelector('.notification-container');
+
+    if (!notificationContainer) return;
+
+    const notification = document.createElement('div');
+    notification.classList.add('notification', type);
+    notification.innerHTML = `<p>${message}</p><span class="close-btn"> X</span>`;
+    notification.addEventListener("click", function (e) {
+    if (e.target.classList.contains("close-btn")) {
+      notificationContainer.removeChild(this);
+    }
+  });
+    notificationContainer.appendChild(notification);
+}
+
+export function removeAllNotifications() {
+    const notificationContainer = document.querySelector('.notification-container');
+    if (!notificationContainer) return;
+    notificationContainer.innerHTML = '';
+}

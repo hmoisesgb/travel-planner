@@ -12,7 +12,7 @@ export async function getCityData(cityName){
         cityData.longitude = location_data.results[0].longitude;
         cityData.id = `${cityData.name}-${cityData.country_code}`;
     } else {
-        console.log('City not found');
+        throw new Error('City not found');
     }
     if (cityData.name !== undefined) {
         await getCityImage(cityData);
@@ -33,7 +33,7 @@ export async function getCityImage(cityData){
         cityData.picture_alt = picture_data.photos[0].alt;
     } 
     else {
-        console.log('Picture not found');
+        throw new Error('City image not found');
     }
 }
 
@@ -51,7 +51,7 @@ export async function getCityWeather(cityData){
         weatherData.twoDaysMin = weather_json.daily.temperature_2m_min[2];
     }
     else{
-        console.log('Weather data not found');
+        throw new Error('Weather data not found');
     }
     return weatherData;
 }

@@ -1,6 +1,6 @@
 import {getFavorites,removeFromFavorites} from "./favorites.mjs";
 import { getCityWeather } from "./city.mjs";
-import { createCityRemoveFavoriteCard, clearCityCards } from "./utils.mjs";
+import { createCityRemoveFavoriteCard, clearCityCards, showNotification , removeAllNotifications} from "./utils.mjs";
 
 const container = document.getElementById('city-cards');
 displayFavorites();
@@ -27,9 +27,13 @@ async function displayFavorites(){
         const card = createCityRemoveFavoriteCard(cityData, weatherData);
         const removeFavoriteBtn = card.querySelector('.remove-favorite-btn');
         removeFavoriteBtn.addEventListener('click', () => {
-            removeFromFavorites(cityData);
+            try {
+            const message = removeFromFavorites(cityData);
+            showNotification(message, 'success');
             displayFavorites();
-        });
+            } catch (error) {
+            showNotification(error.message, 'error');
+            }});
         container.appendChild(card);
     };
 }
